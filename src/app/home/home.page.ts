@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavigationExtras} from "@angular/router";
 import {User} from "../user";
 import {NavController} from "@ionic/angular";
@@ -8,11 +8,15 @@ import {NavController} from "@ionic/angular";
 	templateUrl: 'home.page.html',
 	styleUrls: ['home.page.css'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 	private readonly user: User;
 
 	constructor(private navCtrl: NavController) {
 		this.user = new User("", "", "", "");
+	}
+
+	ngOnInit() {
+		console.log("Local Storage : ", localStorage.getItem("email"))
 	}
 
 	test() {
@@ -51,5 +55,14 @@ export class HomePage {
 				break;
 		}
 		console.log(this.user)
+	}
+
+	signIn() {
+		let navigationExtras: NavigationExtras = {
+			state: {
+				user: this.user
+			}
+		};
+		this.navCtrl.navigateForward("/signin", navigationExtras)
 	}
 }
