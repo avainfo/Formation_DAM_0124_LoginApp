@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">LoginApp</string>
+    <string name="title_activity_main">LoginApp</string>
+    <string name="package_name">fr.avainfo.login</string>
+    <string name="custom_url_scheme">fr.avainfo.login</string>
+</resources>
