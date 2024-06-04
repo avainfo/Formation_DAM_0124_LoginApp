@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {sadOutline} from "ionicons/icons";
+import {Router} from "@angular/router";
+import {User} from "../user";
+import {NavController} from "@ionic/angular";
 
 @Component({
 	selector: 'app-test',
@@ -9,16 +10,24 @@ import {sadOutline} from "ionicons/icons";
 })
 export class TestPage implements OnInit {
 
-	constructor(public activatedRoute: ActivatedRoute) {
-		activatedRoute.queryParams.forEach(value => {
-			console.log(value);
-		});
+	private user: User;
+
+	constructor(private router: Router, private navCtrl: NavController) {
+		// @ts-ignore
+		this.user = this.router.getCurrentNavigation().extras.state.user;
 	}
 
 	ngOnInit() {
-		console.log("test");
+		// @ts-ignore
+		document.getElementById("firstName").innerHTML = this.user.firstName;
+		// @ts-ignore
+		document.getElementById("lastName").innerHTML = this.user.lastName;
+		// @ts-ignore
+		document.getElementById("email").innerHTML = this.user.email;
 	}
 
-	test(testPage: TestPage) {
+	back() {
+		console.log("Retour")
+		this.navCtrl.back();
 	}
 }

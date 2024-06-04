@@ -13,16 +13,16 @@
 	<form method="get" (ngSubmit)="onSubmit()">
 		<ion-list>
 			<ion-item>
-				<ion-input placeholder="Prénom"/>
+				<ion-input placeholder="Prénom" (ionChange)="onDataChange('firstName', $event)"/>
 			</ion-item>
 			<ion-item>
-				<ion-input placeholder="Nom de famille"/>
+				<ion-input placeholder="Nom de famille" (ionChange)="onDataChange('lastName', $event)"/>
 			</ion-item>
 			<ion-item>
-				<ion-input placeholder="Email" type="email"/>
+				<ion-input placeholder="Email" type="email" (ionChange)="onDataChange('email', $event)"/>
 			</ion-item>
 			<ion-item>
-				<ion-input placeholder="Mot de passe" type="password"/>
+				<ion-input placeholder="Mot de passe" type="password" (ionChange)="onDataChange('password', $event)"/>
 			</ion-item>
 		</ion-list>
 		<div class="buttons" style="display: flex; flex-direction: column">
